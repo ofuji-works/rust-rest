@@ -2,8 +2,9 @@
 default_to_workspace = false
 
 [env]
-HOST = "0.0.0.0"
-PORT = 8000
+DATABASE_USERNAME = "app"
+DATABASE_PASSWORD = "passw0rd"
+DATABASE_NAME = "app"
 
 [tasks.run]
 command = "cargo"
@@ -15,7 +16,11 @@ args = ["up", "-d", "--build"]
 
 [tasks.docker_log]
 command = "docker-compose"
-args = ["logs"]
+args = ["logs", "${@}"]
+
+[tasks.docker_stop]
+command = "docker-compose"
+args = ["down", "${@}"]
 
 [tasks.build]
 command = "cargo"

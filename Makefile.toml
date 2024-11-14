@@ -1,0 +1,31 @@
+[config]
+default_to_workspace = false
+
+[env]
+HOST = "0.0.0.0"
+PORT = 8000
+
+[tasks.run]
+command = "cargo"
+args = ["run", "${@}"]
+
+[tasks.docker_run]
+command = "docker-compose"
+args = ["up", "-d", "--build"]
+
+[tasks.docker_log]
+command = "docker-compose"
+args = ["logs"]
+
+[tasks.build]
+command = "cargo"
+args = ["build", "${@}"]
+
+[tasks.fmt]
+command = "cargo"
+args = ["fmt", "--all", "${@}"]
+
+[tasks.watch]
+run_task = { name = ["fmt"] }
+watch = true
+

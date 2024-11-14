@@ -1,0 +1,12 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      network: host
+    ports:
+      - 8080:8080
+volumes:
+  db:
+    driver: local
+
